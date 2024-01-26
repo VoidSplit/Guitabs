@@ -2,7 +2,7 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
     if (w < 2 * r) r = w / 2
     if (h < 2 * r) r = h / 2
     this.beginPath()
-    this.moveTo(x+r, y)
+    this.moveTo(x+r,y)
     this.arcTo(x+w, y,   x+w, y+h, r)
     this.arcTo(x+w, y+h, x,   y+h, r)
     this.arcTo(x,   y+h, x,   y,   r)
@@ -20,11 +20,9 @@ class Tablature {
         this.author = "Song Author"
         this.transcriptor = "Unknown"
         this.tempo = 100
-        this.tuning = {
-            name: "Classic",
-            keys: ["E", "A", "D", "G", "B", "E"]
-        }
-        this.signature = "44"
+        this.tuning = ["E", "A", "D", "G", "B", "E"]
+
+        this.capo = 0;
 
         this.line_list = []
         this.params = {
@@ -37,9 +35,8 @@ class Tablature {
         this.set_canvas_size()
     }
     set_canvas_size() {
-        canvas.height = this.params.header_height + (this.line_list.length* (this.params.line_height + this.params.gap))
+        canvas.height = (this.params.header_height + (this.line_list.length* (this.params.line_height + this.params.gap)))
         canvas.width = 1000
-
     }
     draw(context) {
         this.set_canvas_size()
@@ -79,6 +76,9 @@ class Tablature {
         context.textAlign = "left"
         context.fillText(`= ${this.tempo}`, 90, this.params.header_height - 37)
         context.fillText(`guitar tab`, canvas.width-150, this.params.header_height - 37)
+        if(this.capo > 0) {
+            context.fillText(`Capo fret ${this.capo}`, 55, this.params.header_height+10)
+        }
     }
     draw_line({context, line_index, line}) {
 
@@ -106,7 +106,7 @@ class Tablature {
             context.textBaseline = "top"
             context.fillStyle = "#000"
             context.font = "15px Arial"
-            this.tuning.keys.forEach((tune, tune_index) => {
+            this.tuning.forEach((tune, tune_index) => {
                 context.fillText(tune, this.padding - 6, this.params.header_height + this.params.gap + ((this.params.line_height/7) * (tune_index + 1)) - 6)
             })
         }
@@ -145,7 +145,6 @@ class Tablature {
             author_name: this.author,
             transcriptor: this.transcriptor,
             tempo: this.tempo,
-            signature: this.signature,
             tuning: this.tuning,
             lines: this.line_list
         }
@@ -403,12 +402,28 @@ song_tempo_input.addEventListener('input', (e) => {
     e.target.value !== "" ? tab.tempo = e.target.value : tab.tempo = "100"
 })
 
-const song_tuning_input = document.getElementById("tuning")
-
-song_tuning_input.addEventListener('input', (e) => {
-    // e.target.value !== "" ? tab.tuning = e.target.value : tab.tuning = "100"
-    console.log(e.target.value)
+const capo_input = document.getElementById('capo')
+capo_input.addEventListener('input', (e) => {
+    e.target.value !== "" ? tab.capo = e.target.value : tab.capo = "0"
 })
+
+const song_tuning_input_a = document.getElementById("tuning_a")
+song_tuning_input_a.addEventListener('input', (e) => { e.target.value !== "" ? tab.tuning[0] = e.target.value.trim() : tab.tuning[0] = "E" })
+
+const song_tuning_input_b = document.getElementById("tuning_b")
+song_tuning_input_b.addEventListener('input', (e) => { e.target.value !== "" ? tab.tuning[1] = e.target.value.trim() : tab.tuning[0] = "AE" })
+
+const song_tuning_input_c = document.getElementById("tuning_c")
+song_tuning_input_c.addEventListener('input', (e) => { e.target.value !== "" ? tab.tuning[2] = e.target.value.trim() : tab.tuning[0] = "D" })
+
+const song_tuning_input_d = document.getElementById("tuning_d")
+song_tuning_input_d.addEventListener('input', (e) => { e.target.value !== "" ? tab.tuning[3] = e.target.value.trim() : tab.tuning[0] = "G" })
+
+const song_tuning_input_e = document.getElementById("tuning_e")
+song_tuning_input_e.addEventListener('input', (e) => { e.target.value !== "" ? tab.tuning[4] = e.target.value.trim() : tab.tuning[0] = "B" })
+
+const song_tuning_input_f = document.getElementById("tuning_f")
+song_tuning_input_f.addEventListener('input', (e) => { e.target.value !== "" ? tab.tuning[5] = e.target.value.trim() : tab.tuning[0] = "E" })
 
 const menu = document.getElementById('menu')
 const open_menu = document.getElementById('open_menu')
