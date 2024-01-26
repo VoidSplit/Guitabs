@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 100px 0;
+    min-height: 100vh;
+    align-items: center;
+    padding-bottom: 300px;
+}
+.navigation {
+    position: fixed;
+    bottom: 50px;
+    width: 1000px;
+    background-color: rgba(49, 49, 49, .9);
+    border-radius: 14px;
+    color: #fff;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+}
+.navigation.open .menu_grid {
+    height: 270px;
+}
+.navigation .menu_grid {
+    position: relative;
+    height: 0;
+    width: 100%;
+    bottom: 0%;
+    transition: height .2s ease-out;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.navigation .menu_grid .inner {
+    background-color: #313131;
+    width: 100%;
+    height: 260px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+    overflow: hidden;
+}
+.navigation .menu_grid .columns {
+    height: 100%;
+    width: 100%;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.navigation .menu_grid .effect_grid {
+    background-color: #1e1e1e;
+    width: 1110px;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 7px;
+}
+.navigation .labeled_input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.navigation .labeled_input input {
+    background-color: #1e1e1e;
+    border: none;
+    height: 40px;
+    color: #fff;
+    padding: 0 15px;
+    border-radius: 4px;
+}
+.navigation .labeled_input input:is(:focus,:hover) {
+    background-color: #4d4d4d;
+    outline: 2px solid #757575
+}
+.navigation .pinned_bar {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    gap: 7px;
+}
+.navigation .pinned_bar #open_menu {
+    background-color: rgb(21, 21, 21);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0 30px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+.navigation .pinned_bar #open_menu p {
+    
+    letter-spacing: 1px; 
+    font-weight: 200; 
+    line-height: 2px;
+}
+.navigation .pinned_bar .selector {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.navigation .pinned_bar .category {
+    display: flex;
+    gap: 5px;
+} 
+.navigation .pinned_bar .grid-category {
+    display: grid;
+    grid-template-columns: repeat(6, 58px);
+    grid-template-rows: 1;
+    height: 100%;
+    margin-left: auto;
+    border-radius: 7px;
+    overflow: hidden;
+}
+.navigation .pinned_bar .selector .category:not(:nth-child(1)) {
+    border-left: 1px solid #313131;
+}
+
+.navigation .pinned_bar button {
+    border: none;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    padding: 0 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #3e3e3e;
+    color: #d3d3d3;
+    font-weight: 300;
+}
+.navigation .pinned_bar button:focus {
+    border-top: 3px solid #d3d3d3;
+    outline: none;
+    background-color: #313131;
+}
+.navigation .pinned_bar button:hover {
+    background-color: #313131;
+}
+.navigation .pinned_bar input {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: none;
+    padding: 0px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #3e3e3e;
+    color: #d3d3d3;
+    font-weight: 300;
+}
+.navigation .pinned_bar input:focus,
+.navigation .pinned_bar input:hover {
+    background-color: #313131;
+    outline: none;
+}

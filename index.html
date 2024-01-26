@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="menu" class="navigation">
+        <div class="menu_grid">
+            <div class="inner">
+                <div class="columns">
+                    <div class="labeled_input">
+                        <label for="song_name">Song Name</label>
+                        <input id="song_name" type="text" placeholder="Song name">
+                    </div>
+                    <div class="labeled_input">
+                        <label for="song_author">Song Author</label>
+                        <input id="song_author" type="text" placeholder="Author">
+                    </div>
+                    <div class="labeled_input">
+                        <label for="transcriptor">Tab Author</label>
+                        <input id="transcriptor" type="text" placeholder="Transcriptor">
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="labeled_input">
+                        <label for="tempo">Tempo</label>
+                        <input id="tempo" type="number" min="0" max="1000" value="100">
+                    </div>
+                    <div class="labeled_input">
+                        <label for="tuning">Tuning <span style="padding: 10px;color: rgb(255, 115, 115); font-size: 0.7rem;">not working yet</span></label>
+                        <input id="tuning" type="text" value="EADGBE" placeholder="EADGBE">
+                    </div>
+                    <div class="labeled_input">
+                        <label for="capo">Capo <span style="padding: 10px;color: rgb(255, 115, 115); font-size: 0.7rem;">not working yet</span></label>
+                        <input id="capo" type="number" min="0" max="24" value="0">
+                    </div>
+                </div>
+                <div class="effect_grid"></div>
+            </div>
+        </div>
+        <div class="pinned_bar">
+            <div id="open_menu">
+                <p>Settings</p>
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="selector">
+                <div class="category">
+                    <button id="add_line">Add Line</button>
+                </div>
+                <div class="category">
+                    <button id="reset">Reset</button>
+                </div>
+                <div class="category">
+                    <button id="save">Save</button>
+                </div>
+                <div class="category">
+                    <button id="load">Charge</button>
+                </div>
+                <div class="category">
+                    <button id="new">New</button>
+                </div>
+                <div class="grid-category">
+                    <input id="line_6" placeholder="•" type="text">
+                    <input id="line_5" placeholder="•" type="text">
+                    <input id="line_4" placeholder="•" type="text">
+                    <input id="line_3" placeholder="•" type="text">
+                    <input id="line_2" placeholder="•" type="text">
+                    <input id="line_1" placeholder="•" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
