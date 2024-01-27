@@ -198,3 +198,29 @@ body {
     background-color: #313131;
     outline: none;
 }
+
+#too_small {
+    background-color: #eee;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 1.5rem;
+    padding: 100px
+}
+#too_small.hidden {
+    display: none;
+}
+#too_small .box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#too_small h1 {
+    font-size: 4rem;
+}

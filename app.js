@@ -13,6 +13,19 @@ CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
 
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext('2d')
+const too_small_section = document.getElementById('too_small')
+
+
+
+window.addEventListener('resize', (e) => {
+    if(window.innerWidth < 1000) {
+        too_small_section.classList.remove("hidden")
+        canvas.style.display = "none"
+    } else {
+        too_small_section.classList.add("hidden")
+        canvas.style.display = "block"
+    }
+})
 
 class Tablature {
     constructor() {
